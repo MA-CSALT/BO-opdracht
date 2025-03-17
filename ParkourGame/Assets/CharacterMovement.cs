@@ -8,6 +8,13 @@ public class CharacterMovement : MonoBehaviour
     public float turnSpeed = 10f; // Speed of turning
     public Animator animator; // Animator for movement animations
     public Camera playerCamera; // Camera to determine direction
+    public AudioSource audio;
+
+    void Start() {
+        //audio = GetComponent<AudioSource>();
+        audio.Play();
+        //Debug.Log(audio);
+    }
 
     void Update()
     {
@@ -26,6 +33,8 @@ public class CharacterMovement : MonoBehaviour
             animator.SetBool("WalkBackwards", false);
             animator.SetBool("WalkLeft", false);
             animator.SetBool("WalkRight", false);
+            audio.Stop();
+            Debug.Log("Stop alless");  
             return;
         }
 
@@ -45,19 +54,35 @@ public class CharacterMovement : MonoBehaviour
         // Apply movement animations based on input
         if (moveZ > 0.1f) // Walk Forward
         {
+            checkAudio();
             animator.SetBool("WalkForwards", true);
+            Debug.Log("play forward audios");
         }
         else if (moveZ < -0.1f) // Walk Backward
         {
+            checkAudio();
             animator.SetBool("WalkBackwards", true);
+            Debug.Log("play back audios");
         }
         else if (moveX < -0.1f) // Walk Left
         {
+            checkAudio();
             animator.SetBool("WalkLeft", true);
+            Debug.Log("play left audios");
         }
         else if (moveX > 0.1f) // Walk Right
         {
+            checkAudio();
             animator.SetBool("WalkRight", true);
+            Debug.Log("play right audios");
+        }
+       
+    }
+
+    void checkAudio()
+    {
+        if(!audio.isPlaying){
+            audio.Play();
         }
     }
 }
