@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
@@ -41,6 +42,7 @@ public class CharacterMovement : MonoBehaviour
             audio.Stop();
             Debug.Log("Stop alles");
             return;
+            
         }
 
         // Move the character
