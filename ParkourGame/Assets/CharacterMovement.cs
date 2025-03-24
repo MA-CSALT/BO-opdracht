@@ -7,8 +7,6 @@ public class CharacterMovement : MonoBehaviour
 {
     public float moveSpeed = 5f; // Movement speed
     public float turnSpeed = 10f; // Speed of turning
-    public float jumpspeed = 10f;
-    public Rigidbody rb;
     public Animator animator; // Animator for movement animations
     public Camera playerCamera; // Camera to determine direction
     public AudioSource audio;
@@ -16,7 +14,6 @@ public class CharacterMovement : MonoBehaviour
     void Start() {
         //audio = GetComponent<AudioSource>();
         audio.Play();
-        rb = GetComponent<Rigidbody>();
         //Debug.Log(audio);
     }
 
@@ -25,7 +22,6 @@ public class CharacterMovement : MonoBehaviour
         // Get input from the user (WASD or arrow keys)
         float moveX = Input.GetAxis("Horizontal"); // A/D or Left/Right
         float moveZ = Input.GetAxis("Vertical");   // W/S or Up/Down
-     //   float moveY = Input.GetKeyDown("Spacebar"); // Spacebar
 
 
         // Create a movement vector relative to character's facing direction
@@ -82,10 +78,6 @@ public class CharacterMovement : MonoBehaviour
             checkAudio();
             animator.SetBool("WalkRight", true);
             Debug.Log("play right audios");
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            rb.velocity = new Vector3(0, 5, 0);
         }
     }
 
