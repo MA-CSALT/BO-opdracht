@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Movement speed
+    public float moveSpeed = 10f; // Movement speed
     public float turnSpeed = 10f; // Speed of turning
     public Animator animator; // Animator for movement animations
     public Camera playerCamera; // Camera to determine direction
