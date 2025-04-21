@@ -9,7 +9,7 @@ public class timer : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private float targetTime = 100.0f;
+    public float targetTime = 0.0f;
     public TextMeshProUGUI timerTextField;
 
     void Start()
@@ -21,13 +21,17 @@ public class timer : MonoBehaviour
     void FixedUpdate()
     {
 
-        targetTime -= Time.deltaTime;
+        targetTime += Time.deltaTime;
+
+        int minutes = Mathf.FloorToInt(targetTime / 60);
+
+        int seconds = Mathf.FloorToInt(targetTime % 60);
 
 
 
-        timerTextField.text = UnityEngine.Mathf.Round(targetTime).ToString();
+        timerTextField.text = string.Format("{0:00}:{1:00}", minutes, seconds);
 
-        if (targetTime <= 0.0f)
+        if (targetTime <= 100.0f)
         {
             timerEnded();
         }
@@ -40,4 +44,6 @@ public class timer : MonoBehaviour
     {
         Debug.Log("stop timer");
     }
+
+
 }
